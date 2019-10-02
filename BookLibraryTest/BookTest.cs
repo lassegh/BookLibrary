@@ -26,7 +26,7 @@ namespace BookLibraryTest
             Assert.AreEqual("Aa",book.Title);
         }
 
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [ExpectedException(typeof(ArgumentException))]
         [TestMethod]
         public void TestTitleFail() // Tester titel med 1 char - dette er lige på den forkerte side af det tilladte
         {
@@ -70,14 +70,14 @@ namespace BookLibraryTest
             Assert.AreEqual("0123456789123",book.ISbn);
         }
 
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [ExpectedException(typeof(ArgumentException))]
         [TestMethod]
         public void TestIsbnFailOne() // Tester ISBN med 14 chars
         {
             book.ISbn = "01234567891234";
         }
 
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [ExpectedException(typeof(ArgumentException))]
         [TestMethod]
         public void TestIsbnFailTwo() // Tester ISBN med 12 chars
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 
 namespace BookLibrary
 {
@@ -15,6 +16,7 @@ namespace BookLibrary
 
         public Book(string title, int numberOfPages, string iSbn, string author)
         {
+            // Konstruktøren refererer til klassens properties (i stedet for instansfelterne) så den dermed overholder de constraints, der er sat 
             Title = title;
             NumberOfPages = numberOfPages;
             ISbn = iSbn;
@@ -28,7 +30,8 @@ namespace BookLibrary
             {
                 if (value.Length < 2)
                 {
-                    throw new ArgumentOutOfRangeException("Title cannot be less than 2 characters long");
+                    // Der bruges argumentexception, da der her er tale om en string, der skal overholder nogle krav
+                    throw new ArgumentException("Title cannot be less than 2 characters long");
                 }
                 _title = value;
             }
@@ -45,6 +48,7 @@ namespace BookLibrary
                 {
                    _numberOfPages = value; 
                 }
+                // Her kastes argumentOutOfRangeException, da vi arbejder med tal, der skal være inden for en range
                 else throw new ArgumentOutOfRangeException("Number of pages must be more than 9 and less than 1001");
             }
         }
@@ -56,7 +60,8 @@ namespace BookLibrary
             {
                 if (value.Length != 13)
                 {
-                    throw new ArgumentOutOfRangeException("ISBN must be 13 characters long");
+                    // Der bruges argumentexception, da der her er tale om en string, der skal overholder nogle krav
+                    throw new ArgumentException("ISBN must be 13 characters long");
                 }
                 _iSBN = value;
             }
